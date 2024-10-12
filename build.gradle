@@ -33,6 +33,7 @@ spotless {
 }
 
 jar {
+    destinationDirectory.set(file("$rootDir/jars"))
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest {
         attributes 'Main-Class': 'Main'
