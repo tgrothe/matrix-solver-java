@@ -27,10 +27,12 @@ jobs:
       - name: Build with Gradle Wrapper
         run: ./gradlew jar
 
-      - name: Commit jar
-        run: |
-          git config --global user.name 'Tobias Grothe'
-          git config --global user.email 'tgrothe@users.noreply.github.com'
-          git add -f jars
-          git commit -m "Jar file added"
-          git push
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: jars/matrix-solver-1.0.jar
+          asset_name: matrix-solver.jar
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: "This is my release text"
