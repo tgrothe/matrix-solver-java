@@ -77,7 +77,23 @@ public class GaussJordan {
       print();
     }
 
+    divideAllRows();
+    print();
     result.setSolvedTrue();
+  }
+
+  private void divideAllRows() {
+    final int defaultPrecision = 5;
+    for (int i = 0; i < rows; i++) {
+      for (int j = 0; j < cols - 1; j++) {
+        double a = matrix[i][j];
+        double b = matrix[i][cols - 1];
+        if (!(areEqualDouble(a, 0, defaultPrecision) || areEqualDouble(a, 1, defaultPrecision))) {
+          matrix[i][j] = 1;
+          matrix[i][cols - 1] = b / a;
+        }
+      }
+    }
   }
 
   @Override
@@ -87,5 +103,12 @@ public class GaussJordan {
 
   public static String getGaussJordanResult(double[][] matrix) {
     return new GaussJordan(matrix).toString();
+  }
+
+  /**
+   * @param precision number of decimal digits
+   */
+  public static boolean areEqualDouble(double a, double b, int precision) {
+    return Math.abs(a - b) <= Math.pow(10, -precision);
   }
 }
