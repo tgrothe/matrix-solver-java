@@ -11,7 +11,7 @@ public class UI {
           jf.setLayout(new BorderLayout());
           JPanel p1 = new JPanel(new GridLayout(1, 2));
           JPanel p2 = new JPanel(new FlowLayout());
-          JTextArea jtaInput = new JTextArea();
+          JTextArea jtaInput  = new JTextArea();
           JTextArea jtaOutput = new JTextArea();
           JButton jbSolve = new JButton("-> Solve ->");
           JButton jbClear = new JButton("Clear");
