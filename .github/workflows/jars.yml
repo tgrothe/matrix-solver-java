@@ -35,4 +35,4 @@ jobs:
           asset_name: matrix-solver.jar
           tag: ${{ github.ref }}
           overwrite: true
-          body: "This is my release text"
+          body: "Read the readme file for details."
