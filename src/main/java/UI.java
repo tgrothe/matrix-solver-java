@@ -3,6 +3,9 @@ import java.util.Arrays;
 import java.util.function.Predicate;
 import javax.swing.*;
 
+/**
+ * The UI class creates and displays the user interface for the application.
+ */
 public class UI {
   public static void showUI() {
     SwingUtilities.invokeLater(
