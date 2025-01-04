@@ -1,8 +1,6 @@
 import java.util.Locale;
 
-/**
- * The GaussJordan class solves linear equation systems using the Gauss-Jordan algorithm.
- */
+/** The GaussJordan class solves linear equation systems using the Gauss-Jordan algorithm. */
 public class GaussJordan {
   private final double[][] matrix;
   private final int rows;
