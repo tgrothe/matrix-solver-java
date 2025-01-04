@@ -20,6 +20,7 @@ public class GaussJordan {
     solve();
   }
 
+  /** Prints the current state of the matrix. */
   private void print() {
     for (int i = 0; i < rows; i++) {
       StringBuilder s = new StringBuilder();
@@ -31,6 +32,14 @@ public class GaussJordan {
     result.addLine("");
   }
 
+  /**
+   * Reduces the second row by subtracting a multiple of the first row.
+   *
+   * @param r1 the first row
+   * @param r2 the second row
+   * @param pos the position to start reducing from
+   * @return true if the reduction was successful, false otherwise
+   */
   private boolean reduceRow(double[] r1, double[] r2, int pos) {
     if (r1.length != r2.length) {
       return false;
@@ -43,6 +52,7 @@ public class GaussJordan {
     return true;
   }
 
+  /** Solves the system of linear equations using the Gauss-Jordan algorithm. */
   private void solve() {
     int k; // pivot
     double[] swapTemp;
@@ -50,12 +60,14 @@ public class GaussJordan {
     for (int i = 0; i < rows; i++) {
       k = i;
 
+      // Find the row with the largest pivot element
       for (int j = i + 1; j < rows; j++) {
         if (matrix[j][i] > matrix[k][i]) {
           k = j;
         }
       }
 
+      // If the pivot element is zero, the system has free variables
       if (matrix[k][i] == 0) {
         result.addLine("System of equations contains free variables");
         return;
@@ -78,11 +90,13 @@ public class GaussJordan {
       print();
     }
 
+    // Divide all rows to make the pivot elements 1
     divideAllRows();
     print();
     result.setSolvedTrue();
   }
 
+  /** Divides all rows to make the pivot elements 1. */
   private void divideAllRows() {
     final int defaultPrecision = 5;
     for (int i = 0; i < rows; i++) {
@@ -102,12 +116,23 @@ public class GaussJordan {
     return result.toString();
   }
 
+  /**
+   * Returns the result of the Gauss-Jordan algorithm as a string.
+   *
+   * @param matrix the matrix to solve
+   * @return the result of the Gauss-Jordan algorithm
+   */
   public static String getGaussJordanResult(double[][] matrix) {
     return new GaussJordan(matrix).toString();
   }
 
   /**
-   * @param precision number of decimal digits
+   * Checks if two double values are equal within a given precision.
+   *
+   * @param a the first double value
+   * @param b the second double value
+   * @param precision the number of decimal digits
+   * @return true if the values are equal within the given precision, false otherwise
    */
   public static boolean areEqualDouble(double a, double b, int precision) {
     return Math.abs(a - b) <= Math.pow(10, -precision);
