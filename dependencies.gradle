@@ -6,6 +6,5 @@ ext {
 
     // -- DEPENDENCIES
     supportedDependencies = [
-            lang3: 'org.apache.commons:commons-lang3:3.17.0',
     ]
 }

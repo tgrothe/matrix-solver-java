@@ -15,8 +15,6 @@ Its use is largely self-explanatory.
 ### Dependencies
 
 This project uses the following dependencies:
-- Apache Commons Lang 3
-- org.json:json
 
 ### Build Process
 
