@@ -17,8 +17,6 @@ repositories {
 }
 
 dependencies {
-    implementation supportedDependencies.lang3
-    implementation 'org.json:json:20250107'
 }
 
 tasks.withType(JavaCompile) {
