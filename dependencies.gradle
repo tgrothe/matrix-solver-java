@@ -2,7 +2,7 @@ ext {
     // -- PLUGINS
     spotlessVersion = '7.0.3'
     benmanesVersion = '0.52.0'
-    spotbugsVersion = '6.1.7'
+    spotbugsVersion = '6.1.9'
 
     // -- DEPENDENCIES
     supportedDependencies = [
