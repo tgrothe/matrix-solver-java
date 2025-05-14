@@ -1,14 +1,13 @@
 name: Commit jars
 
 on:
-  workflow_run:
-    workflows: Java CI with Gradle
-    branches: main
-    types: completed
+  workflow_dispatch:
+  push:
+    tags:
+      - 'release-**'
 
 jobs:
   build:
-    if: ${{ (github.event.workflow_run.conclusion == 'success') && (github.ref == 'refs/heads/main') }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -31,8 +30,6 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: jars/matrix-solver-1.0.jar
-          asset_name: matrix-solver.jar
-          tag: ${{ github.ref }}
-          overwrite: true
+          file: build/libs/*.jar
+          file_glob: true
           body: "Read the readme file for details."
